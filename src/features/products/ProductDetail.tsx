@@ -70,18 +70,38 @@ const ProductDetail: React.FC = () => {
 
 			<div className="w-full pt-32 p-8">
 				<div className="w-full flex justify-start items-baseline gap-12">
-					<h1
-						onClick={() => dispatch({ type: "inView", currentView: "info" })}
-						className="text-7xl font-extrabold"
-					>
-						Info
-					</h1>
-					<h1
-						onClick={() => dispatch({ type: "inView", currentView: "reviews" })}
-						className="text-4xl"
-					>
-						Reviews
-					</h1>
+					<div className="flex flex-col items-center">
+						<h1
+							onClick={() => dispatch({ type: "inView", currentView: "info" })}
+							className={` transition-all duration-50 ${
+								state.currentView === "info"
+									? "text-7xl font-extrabold"
+									: "text-4xl"
+							}`}
+						>
+							Info
+						</h1>
+						{state.currentView === "info" && (
+							<div className="w-11 h-2 bg-[#d400df] mt-4 rounded-full transition-all ease-in-out"></div>
+						)}
+					</div>
+					<div className="flex flex-col items-center">
+						<h1
+							onClick={() =>
+								dispatch({ type: "inView", currentView: "reviews" })
+							}
+							className={` transition-all duration-50 ${
+								state.currentView === "reviews"
+									? "text-7xl font-extrabold"
+									: "text-4xl"
+							}`}
+						>
+							Reviews
+						</h1>
+						{state.currentView === "reviews" && (
+							<div className="w-11 h-2 bg-[#d400df] mt-4 rounded-full transition-all ease-in-out"></div>
+						)}
+					</div>
 				</div>
 
 				{state.currentView === "info" ? (
@@ -91,6 +111,7 @@ const ProductDetail: React.FC = () => {
 								<img
 									src={plant4}
 									alt=""
+									loading="lazy"
 									className="w-full h-full object-cover rounded-[60px]"
 								/>
 								<span
