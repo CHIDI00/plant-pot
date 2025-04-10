@@ -3,8 +3,8 @@ import React from "react";
 
 const ProductReview: React.FC = () => {
 	return (
-		<div>
-			<div className="">
+		<div className="w-full flex flex-col justify-start items-center p-10">
+			<div className="w-[100%] bg-gray-200 p-7 rounded-3xl">
 				<div>
 					<div>
 						<img src="" alt="" />
@@ -19,6 +19,11 @@ const ProductReview: React.FC = () => {
 						</p>
 					</div>
 				</div>
+
+				<p>
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit,
+					saepe?
+				</p>
 			</div>
 		</div>
 	);
