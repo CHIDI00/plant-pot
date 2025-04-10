@@ -8,7 +8,7 @@ const VaviriumSection = () => {
 				{vivaria.map((vivaria) => (
 					<div
 						key={vivaria.id}
-						className="flex-shrink-0 w-[30rem] bg-red-700 overflow-hidden relative shadow-md rounded-[4rem]"
+						className="flex-shrink-0 w-[30rem] overflow-hidden relative shadow-md rounded-[4rem]"
 					>
 						<img src={vivaria.img} alt={vivaria.name} className=" w-full" />
 						<div className="absolute top-0 left-0 p-5 w-full h-full flex flex-col justify-end items-baseline hover:bg-[#00000064] transition-all">
