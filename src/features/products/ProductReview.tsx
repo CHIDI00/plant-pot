@@ -1,12 +1,25 @@
 import { Star } from "lucide-react";
-import React from "react";
-import { reviews } from "../../data/review";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import { products } from "../../data/products";
 
 const ProductReview: React.FC = () => {
+	const { id } = useParams<{ id: string }>();
+	const [product, setProduct] = useState(products[0]);
+
+	useEffect(() => {
+		if (id) {
+			const foundProduct = products.find((p) => p.id === parseInt(id));
+			if (foundProduct) {
+				setProduct(foundProduct);
+			}
+		}
+	}, [id]);
 	return (
 		<>
 			<div className="w-full flex flex-col justify-start items-center py-10">
-				{reviews.map((review) => (
+				{product?.review?.map((review) => (
 					<div className="w-[100%] bg-gray-100 p-7 rounded-[4rem] flex flex-col justify-start items-center mb-5">
 						<div className="w-full flex justify-between items-center mb-3">
 							<div className="flex justify-center items-center gap-4 mb-2">

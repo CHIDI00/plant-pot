@@ -1,8 +1,8 @@
 import React, { useReducer, useEffect, useState } from "react";
 import NavBar from "../../ui/NavBar";
-// import plant4 from "../../assets/plant4.png";
-import { Minus, Plus } from "lucide-react";
 import ProductReview from "./ProductReview";
+
+import { Minus, Plus } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { products } from "../../data/products";
 import { useCart } from "../../context/CartContext";
@@ -56,7 +56,7 @@ const productReducer = (
 const ProductDetail: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
 	const [product, setProduct] = useState(products[0]);
-	const { state: state2, incrementQuantity, decrementQuantity } = useCart();
+	const { incrementQuantity, decrementQuantity } = useCart();
 
 	const { addToCart } = useCart();
 	const [addedProducts, setAddedProducts] = useState<{
@@ -204,7 +204,7 @@ const ProductDetail: React.FC = () => {
 								</div>
 							</div>
 							<h1 className="text-6xl font-extrabold mb-5">${totalPrice}</h1>
-							<p className="text-6xl font-semibold text-gray-600">
+							<p className="text-4xl font-semibold text-gray-600">
 								{product?.name}
 							</p>
 						</div>
