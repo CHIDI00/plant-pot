@@ -9,6 +9,7 @@ import plant9 from "../assets/plant9.jpeg";
 // import plant10 from '../assets/plant2.png'
 
 interface Product {
+	id: number;
 	name: string;
 	price: number;
 	quantity: number;
@@ -18,6 +19,7 @@ interface Product {
 
 export const products: Product[] = [
 	{
+		id: 1,
 		name: "Aloe vera",
 		price: 109.99,
 		quantity: 5,
@@ -25,6 +27,7 @@ export const products: Product[] = [
 		image: plant4,
 	},
 	{
+		id: 2,
 		name: "Product 1",
 		price: 10.99,
 		quantity: 5,
@@ -32,6 +35,7 @@ export const products: Product[] = [
 		image: plant5,
 	},
 	{
+		id: 3,
 		name: "Product 1",
 		price: 10.99,
 		quantity: 5,
@@ -39,6 +43,7 @@ export const products: Product[] = [
 		image: plant7,
 	},
 	{
+		id: 4,
 		name: "Product 1",
 		price: 10.99,
 		quantity: 5,
@@ -46,6 +51,7 @@ export const products: Product[] = [
 		image: plant3,
 	},
 	{
+		id: 5,
 		name: "Product 1",
 		price: 10.99,
 		quantity: 5,
@@ -53,6 +59,7 @@ export const products: Product[] = [
 		image: plant6,
 	},
 	{
+		id: 6,
 		name: "Product 1",
 		price: 10.99,
 		quantity: 5,
@@ -60,6 +67,7 @@ export const products: Product[] = [
 		image: plant9,
 	},
 	{
+		id: 7,
 		name: "Product 1",
 		price: 10.99,
 		quantity: 5,

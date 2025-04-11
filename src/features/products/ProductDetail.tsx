@@ -1,8 +1,10 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import NavBar from "../../ui/NavBar";
-import plant4 from "../../assets/plant4.png";
+// import plant4 from "../../assets/plant4.png";
 import { Minus, Plus } from "lucide-react";
 import ProductReview from "./ProductReview";
+import { useParams } from "react-router-dom";
+import { products } from "../../data/products";
 
 // Define action types
 type ActionType =
@@ -51,9 +53,22 @@ const productReducer = (
 };
 
 const ProductDetail: React.FC = () => {
+	const { id } = useParams<{ id: string }>();
+	const [product, setProduct] = useState(products[0]);
+
+	// Find the product with the matching ID
+	useEffect(() => {
+		if (id) {
+			const foundProduct = products.find((p) => p.id === parseInt(id));
+			if (foundProduct) {
+				setProduct(foundProduct);
+			}
+		}
+	}, [id]);
+
 	// Initial state
 	const initialState: ProductState = {
-		basePrice: 10,
+		basePrice: product?.price || 10,
 		quantity: 1,
 		isOpen: false,
 		currentView: "info",
@@ -109,8 +124,8 @@ const ProductDetail: React.FC = () => {
 						<div className="w-full flex flex-col justify-start items-center mt-28 ">
 							<div className="relative w-[90%] h-[50rem] mb-20">
 								<img
-									src={plant4}
-									alt=""
+									src={product?.image}
+									alt={product?.name}
 									loading="lazy"
 									className="w-full h-full object-cover rounded-[60px]"
 								/>
@@ -129,7 +144,7 @@ const ProductDetail: React.FC = () => {
 									}`}
 								>
 									<div className="w-full flex flex-col justify-between items-center gap-5 ">
-										<h1 className="text-8xl text-white font-extrabold mb-5">
+										<h1 className="text-6xl text-white font-extrabold mb-5">
 											${totalPrice}
 										</h1>
 										<div className="w-full flex justify-center items-center gap-14">
@@ -158,8 +173,10 @@ const ProductDetail: React.FC = () => {
 									</div>
 								</div>
 							</div>
-							<h1 className="text-8xl font-extrabold mb-5">${totalPrice}</h1>
-							<p className="text-6xl font-semibold text-gray-600">Aloe vera</p>
+							<h1 className="text-6xl font-extrabold mb-5">${totalPrice}</h1>
+							<p className="text-6xl font-semibold text-gray-600">
+								{product?.name}
+							</p>
 						</div>
 
 						<button className="bg-black font-bold text-white  text-4xl w-[90%] h-28 rounded-full py-5 px-15 mb-10">

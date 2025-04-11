@@ -1,16 +1,14 @@
 import { ChevronLeft, Minus, Plus } from "lucide-react";
 import React from "react";
 import plant4 from "../../assets/plant4.png";
-// import { useNavigation } from "react-router-dom";
+import { useMoveBack } from "../../hooks/useMoveback";
 
 const CartSection: React.FC = () => {
-	// const moveBack = useNavigation();
+	const moveBack = useMoveBack();
 
 	return (
 		<div className="w-full h-screen p-10">
-			<span
-			// onClick={moveBack}
-			>
+			<span onClick={moveBack} className="cursor-pointer">
 				<ChevronLeft />
 			</span>
 

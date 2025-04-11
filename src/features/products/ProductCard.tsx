@@ -1,12 +1,17 @@
 import React from "react";
 import { Plus } from "lucide-react";
 import { products } from "../../data/products";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard: React.FC = () => {
+	const navigate = useNavigate();
 	return (
 		<>
 			{products.map((product) => (
-				<div className="w-full h-[31rem]  rounded-[40px] shadow-lg">
+				<div 
+				className="w-full h-[31rem] rounded-[40px] shadow-lg cursor-pointer" 
+				onClick={() => navigate(`/products/detail/${product.id}`)}
+			>
 					<div className="relative w-full h-[70%] ">
 						<img
 							src={product.image}
