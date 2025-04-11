@@ -1,10 +1,11 @@
 import { ChevronLeft, Minus, Plus } from "lucide-react";
 import React from "react";
-import plant4 from "../../assets/plant4.png";
 import { useMoveBack } from "../../hooks/useMoveback";
+import { useCart } from "../../context/CartContext";
 
 const CartSection: React.FC = () => {
 	const moveBack = useMoveBack();
+	const { state, incrementQuantity, decrementQuantity, removeFromCart } = useCart();
 
 	return (
 		<div className="w-full h-screen p-10">
@@ -16,32 +17,40 @@ const CartSection: React.FC = () => {
 				<h1 className="text-6xl font-extrabold my-10">Basket</h1>
 
 				<div className="w-full h-[70%] overflow-scroll">
-					<div className="shadow-md rounded-3xl flex justify-between items-center mb-7 py-7 px-7">
-						<div className="flex justify-center items-center gap-5">
-							<img src={plant4} alt="" className="w-32 h-32 rounded-3xl" />
-							<div className="h-32">
-								<p className="text-2xl font-bold mb-2">$20</p>
-								<p className="text-2xl mb-2">Aloe vera</p>
-								<p className="text-2xl mb-2">2</p>
+					{state.items.length === 0 ? (
+						<div className="w-full h-full flex justify-center items-center">
+							<p className="text-3xl text-gray-500">Your cart is empty</p>
+						</div>
+					) : (
+						state.items.map((item) => (
+							<div key={item.id} className="shadow-md rounded-3xl flex justify-between items-center mb-7 py-7 px-7">
+								<div className="flex justify-center items-center gap-5">
+									<img src={item.image} alt={item.name} className="w-32 h-32 rounded-3xl object-cover" />
+									<div className="h-32">
+										<p className="text-2xl font-bold mb-2">${item.price}</p>
+										<p className="text-2xl mb-2">{item.name}</p>
+										<p className="text-2xl mb-2">{item.quantity}</p>
+									</div>
+								</div>
+
+								<div className="h-full gap-6">
+									<span
+										onClick={() => incrementQuantity(item.id)}
+										className="w-12 h-12 bg-[#00000078] backdrop-blur-lg rounded-full text-white flex justify-center items-center cursor-pointer mb-5"
+									>
+										<Plus />
+									</span>
+
+									<span
+										onClick={() => decrementQuantity(item.id)}
+										className="w-12 h-12 bg-[#00000078] rounded-full text-white flex justify-center items-center cursor-pointer mt-5"
+									>
+										<Minus />
+									</span>
+								</div>
 							</div>
-						</div>
-
-						<div className="h-full gap-6">
-							<span
-								// onClick={() => dispatch({ type: "DECREMENT" })}
-								className="w-12 h-12 bg-[#00000078] backdrop-blur-lg rounded-full text-white flex justify-center items-center cursor-pointer mb-5"
-							>
-								<Plus />
-							</span>
-
-							<span
-								// onClick={() => dispatch({ type: "INCREMENT" })}
-								className="w-12 h-12 bg-[#00000078] rounded-full text-white flex justify-center items-center cursor-pointer mt-5"
-							>
-								<Minus />
-							</span>
-						</div>
-					</div>
+						))
+					)}
 					{/* <div className="shadow-md rounded-3xl flex justify-between items-center py-7 px-7">
 						<div className="flex justify-center items-center gap-5">
 							<img src={plant4} alt="" className="w-32 h-32 rounded-3xl" />

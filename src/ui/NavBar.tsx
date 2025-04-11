@@ -11,9 +11,12 @@ const NavBar: React.FC = () => {
 
 			<div className="flex justify-center items-center gap-7">
 				<Search />
-				<span onClick={() => navigate("/cart")}>
+				<div onClick={() => navigate("/cart")} className="relative">
 					<ShoppingBasket />
-				</span>
+					<span className="absolute top-[-5px] right-[-5px] p-1 px-3 text-white rounded-full border-2 border-white bg-green-600">
+						0
+					</span>
+				</div>
 			</div>
 		</div>
 	);
