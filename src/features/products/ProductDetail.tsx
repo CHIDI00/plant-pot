@@ -5,6 +5,7 @@ import { Minus, Plus } from "lucide-react";
 import ProductReview from "./ProductReview";
 import { useParams } from "react-router-dom";
 import { products } from "../../data/products";
+import { useCart } from "../../context/CartContext";
 
 // Define action types
 type ActionType =
@@ -55,6 +56,25 @@ const productReducer = (
 const ProductDetail: React.FC = () => {
 	const { id } = useParams<{ id: string }>();
 	const [product, setProduct] = useState(products[0]);
+	const { state: state2, incrementQuantity, decrementQuantity } = useCart();
+
+	const { addToCart } = useCart();
+	const [addedProducts, setAddedProducts] = useState<{
+		[key: number]: boolean;
+	}>({});
+
+	const handleAddToCart = (e: React.MouseEvent, productId: number) => {
+		e.stopPropagation(); // Prevent navigation to product detail
+		addToCart(productId);
+
+		// Show added confirmation
+		setAddedProducts((prev) => ({ ...prev, [productId]: true }));
+
+		// Reset after 1.5 seconds
+		setTimeout(() => {
+			setAddedProducts((prev) => ({ ...prev, [productId]: false }));
+		}, 1500);
+	};
 
 	// Find the product with the matching ID
 	useEffect(() => {
@@ -149,7 +169,10 @@ const ProductDetail: React.FC = () => {
 										</h1>
 										<div className="w-full flex justify-center items-center gap-14">
 											<span
-												onClick={() => dispatch({ type: "DECREMENT" })}
+												onClick={(e) => {
+													e.stopPropagation();
+													decrementQuantity(product.id);
+												}}
 												className="w-16 h-16 bg-[#00000078] backdrop-blur-lg rounded-full text-white flex justify-center items-center cursor-pointer"
 											>
 												<Minus />
@@ -158,7 +181,10 @@ const ProductDetail: React.FC = () => {
 												{state.quantity}
 											</span>
 											<span
-												onClick={() => dispatch({ type: "INCREMENT" })}
+												onClick={(e) => {
+													e.stopPropagation();
+													incrementQuantity(product.id);
+												}}
 												className="w-16 h-16 bg-[#00000078] rounded-full text-white flex justify-center items-center cursor-pointer"
 											>
 												<Plus />
@@ -166,10 +192,14 @@ const ProductDetail: React.FC = () => {
 										</div>
 									</div>
 									<div
-										onClick={() => dispatch({ type: "TOGGLE" })}
+										onClick={(e) => {
+											e.stopPropagation();
+											addToCart(product.id);
+											dispatch({ type: "TOGGLE" });
+										}}
 										className="w-[60%] py-5 flex justify-center items-center bg-[#00000078] rounded-full text-4xl text-white font-semibold"
 									>
-										Add item
+										Add to cart
 									</div>
 								</div>
 							</div>
@@ -179,8 +209,13 @@ const ProductDetail: React.FC = () => {
 							</p>
 						</div>
 
-						<button className="bg-black font-bold text-white  text-4xl w-[90%] h-28 rounded-full py-5 px-15 mb-10">
-							Add to cart
+						<button
+							onClick={(e) => handleAddToCart(e, product.id)}
+							className={`bg-black font-bold text-white  text-4xl w-[90%] h-28 rounded-full py-5 px-15 mb-10 transition-all duration-75 ${
+								addedProducts[product.id] && "bg-green-600"
+							}`}
+						>
+							{addedProducts[product.id] ? "Successfully added" : "Add to cart"}
 						</button>
 					</div>
 				) : (
