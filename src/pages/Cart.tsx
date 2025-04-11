@@ -3,7 +3,7 @@ import CartSection from "../features/cart/CartSection";
 
 const Cart: React.FC = () => {
 	return (
-		<div>
+		<div className="w-full h-full">
 			<CartSection />
 		</div>
 	);
