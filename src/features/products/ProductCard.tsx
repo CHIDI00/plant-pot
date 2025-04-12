@@ -27,14 +27,14 @@ const ProductCard: React.FC = () => {
 		<>
 			{products.map((product) => (
 				<div
-					className="w-full h-[31rem] rounded-[40px] shadow-lg cursor-pointer"
+					className="w-full h-[31rem] rounded-[20px] shadow-md cursor-pointer"
 					onClick={() => navigate(`/products/detail/${product.id}`)}
 				>
 					<div className="relative w-full h-[70%] ">
 						<img
 							src={product.image}
 							alt={product.name}
-							className="w-full h-full object-cover rounded-t-[40px]"
+							className="w-full h-full object-cover rounded-t-[20px]"
 						/>
 						<span
 							className={`absolute right-7 top-7 p-1 ${
@@ -47,8 +47,8 @@ const ProductCard: React.FC = () => {
 							{addedProducts[product.id] ? <Check /> : <Plus />}
 						</span>
 					</div>
-					<div className="w-full h-[30%] flex flex-col justify-center items-center text-2xl gap-2">
-						<p className="font-bold text-4xl">{product.name}</p>
+					<div className="w-full h-[30%] flex flex-col justify-center p-1 items-center text-2xl gap-2">
+						<p className="font-bold text-center text-4xl">{product.name}</p>
 						<p className="text-4xl">${product.price}</p>
 					</div>
 				</div>
