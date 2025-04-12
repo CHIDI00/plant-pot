@@ -6,6 +6,8 @@ import Store from "./pages/Store";
 import ProductDetail from "./features/products/ProductDetail";
 import Cart from "./pages/Cart";
 import Payment from "./pages/Payment";
+import CheckOut from "./features/payment/CheckOut";
+
 import { CartProvider } from "./context/CartContext";
 
 function App() {
@@ -18,7 +20,8 @@ function App() {
 				<Route path="/products" element={<Store />} />
 				<Route path="/products/detail/:id" element={<ProductDetail />} />
 				<Route path="/cart" element={<Cart />} />
-				<Route path="/payment_method" element={<Payment />} />
+				<Route path="/cart/payment_method" element={<Payment />} />
+				<Route path="/cart/payment_method/checkout" element={<CheckOut />} />
 			</Routes>
 		</CartProvider>
 	);

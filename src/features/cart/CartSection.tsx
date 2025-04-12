@@ -79,7 +79,7 @@ const CartSection: React.FC = () => {
 					</div>
 					<button
 						disabled={state.items.length < 1}
-						onClick={() => navigate("/payment_method")}
+						onClick={() => navigate("/cart/payment_method")}
 						className="bg-black font-bold text-white text-4xl w-[90%] h-28 rounded-full py-5 px-15 mb-10 disabled:opacity-50 disabled:cursor-not-allowed"
 					>
 						Checkout

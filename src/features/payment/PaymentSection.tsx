@@ -1,11 +1,15 @@
 import { ChevronLeft } from "lucide-react";
 import { useMoveBack } from "../../hooks/useMoveback";
+import { useNavigate } from "react-router-dom";
+
 import { Check } from "lucide-react";
 
 import visalogo from "../../assets/visalogo.png";
 
 const PaymentSection: React.FC = () => {
 	const moveBack = useMoveBack();
+	const navigate = useNavigate();
+
 	return (
 		<div className="w-full h-screen p-10">
 			<span onClick={moveBack} className="cursor-pointer">
@@ -38,10 +42,10 @@ const PaymentSection: React.FC = () => {
 				<div className="h-[20%] w-full flex flex-col justify-end items-center ">
 					<button
 						// disabled={state.items.length < 1}
-						// onClick={() => navigate("/payment_method")}
+						onClick={() => navigate("/cart/payment_method/checkout")}
 						className="bg-black font-bold text-white text-4xl w-[90%] h-28 rounded-full py-5 px-15 mb-10 disabled:opacity-50 disabled:cursor-not-allowed"
 					>
-						Checkout
+						Confirm payment method
 					</button>
 				</div>
 			</div>
