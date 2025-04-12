@@ -1,10 +1,12 @@
-import { ChevronLeft, Minus, Plus } from "lucide-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { ChevronLeft, Minus, Plus } from "lucide-react";
 import { useMoveBack } from "../../hooks/useMoveback";
 import { useCart } from "../../context/CartContext";
 
 const CartSection: React.FC = () => {
 	const moveBack = useMoveBack();
+	const navigate = useNavigate();
 	const { state, incrementQuantity, decrementQuantity } = useCart();
 
 	return (
@@ -77,7 +79,7 @@ const CartSection: React.FC = () => {
 					</div>
 					<button
 						disabled={state.items.length < 1}
-						onClick={() => alert("Order placed successfully!")}
+						onClick={() => navigate("/payment_method")}
 						className="bg-black font-bold text-white text-4xl w-[90%] h-28 rounded-full py-5 px-15 mb-10 disabled:opacity-50 disabled:cursor-not-allowed"
 					>
 						Checkout
