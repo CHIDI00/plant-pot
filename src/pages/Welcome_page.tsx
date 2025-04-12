@@ -15,7 +15,7 @@ const Welcome_page: React.FC = () => {
 					onClick={() => navigate("/home")}
 					className="bg-black font-bold text-white  text-4xl w-[300px] h-28 rounded-full py-5 px-15 mb-10"
 				>
-					Login
+					Welcome
 				</button>
 				<button className=" text-blck font-bold text-4xl w-[300px] h-28 rounded-full py-5 px-15">
 					Register

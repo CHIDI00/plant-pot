@@ -38,7 +38,7 @@ export const products: Product[] = [
 	{
 		id: 1,
 		name: "Aloe vera",
-		price: 109.99,
+		price: 19.99,
 		quantity: 5,
 		description: "Description of Product 1",
 		image: plant4,
@@ -69,8 +69,8 @@ export const products: Product[] = [
 	},
 	{
 		id: 2,
-		name: "Product 1",
-		price: 10.99,
+		name: "Dracaena trifasciata",
+		price: 12,
 		quantity: 5,
 		description: "Description of Product 1",
 		image: plant5,
@@ -93,8 +93,8 @@ export const products: Product[] = [
 	},
 	{
 		id: 3,
-		name: "Product 1",
-		price: 10.99,
+		name: "Peace Lily",
+		price: 23.99,
 		quantity: 5,
 		description: "Description of Product 1",
 		image: plant7,
@@ -162,8 +162,8 @@ export const products: Product[] = [
 	},
 	{
 		id: 5,
-		name: "Product 1",
-		price: 10.99,
+		name: "Ferns",
+		price: 15,
 		quantity: 5,
 		description: "Description of Product 1",
 		image: plant6,
@@ -186,8 +186,8 @@ export const products: Product[] = [
 	},
 	{
 		id: 6,
-		name: "Product 1",
-		price: 10.99,
+		name: "Philodendron",
+		price: 28.99,
 		quantity: 5,
 		description: "Description of Product 1",
 		image: plant9,
@@ -238,8 +238,8 @@ export const products: Product[] = [
 	},
 	{
 		id: 7,
-		name: "Product 1",
-		price: 10.99,
+		name: "Bamboo Palm",
+		price: 32,
 		quantity: 5,
 		description: "Description of Product 1",
 		image: plant8,

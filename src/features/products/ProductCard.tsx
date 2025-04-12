@@ -48,8 +48,8 @@ const ProductCard: React.FC = () => {
 						</span>
 					</div>
 					<div className="w-full h-[30%] flex flex-col justify-center p-1 items-center text-2xl gap-2">
-						<p className="font-bold text-center text-4xl">{product.name}</p>
-						<p className="text-4xl">${product.price}</p>
+						<p className="font-semibold text-center text-3xl">{product.name}</p>
+						<p className="text-4xl font-bold">${product.price}</p>
 					</div>
 				</div>
 			))}

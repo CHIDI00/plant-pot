@@ -55,15 +55,15 @@ const ProductShowcase = () => {
 							</span>
 						</div>
 						<div className="w-full h-[30%] flex flex-col justify-center p-1 items-center text-xl gap-2">
-							<h3 className="font-semibold">{product.name}</h3>
-							<p className="font-bold">${product.price}</p>
+							<h3 className="text-3xl font-semibold">{product.name}</h3>
+							<p className="text-3xl font-bold">${product.price}</p>
 						</div>
 					</div>
 				))}
 			</div>
 			<div className="w-full flex justify-center mt-6 mb-10">
 				<button
-					className="bg-slate-800 hover:bg-slate-700 text-white py-3 px-8 rounded-full text-xl transition-colors"
+					className="bg-slate-800 hover:bg-slate-700 text-white py-3 px-8 rounded-full text-2xl transition-colors"
 					onClick={() => navigate("/products")}
 				>
 					View All Products

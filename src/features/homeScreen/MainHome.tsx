@@ -1,7 +1,7 @@
 import NavBar from "../../ui/NavBar";
 import Favourite from "./Favourite";
 import VaviriumSection from "./VaviriumSection";
-import ProductShowcase from "./productShowcase";
+import ProductShowcase from "./ProductShowcase";
 
 const MainHome: React.FC = () => {
 	return (
